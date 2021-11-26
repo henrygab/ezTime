@@ -918,9 +918,8 @@ String Timezone::getPosix() { return _posix; }
 		
 		void Timezone::clearCache(const bool delete_section /* = false */) {
 		
-			(void)delete_section;
-
 			#ifdef EZTIME_CACHE_EEPROM
+				(void)delete_section; // UNUSED_PARAMETER(delete_section);
 				eepromBegin();
 				if (_eeprom_address < 0) { triggerError(NO_CACHE_SET); return; }
 				for (int16_t n = _eeprom_address; n < _eeprom_address + EEPROM_CACHE_LEN; n++) EEPROM.write(n, 0);
