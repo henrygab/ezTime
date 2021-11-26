@@ -918,6 +918,8 @@ String Timezone::getPosix() { return _posix; }
 		
 		void Timezone::clearCache(const bool delete_section /* = false */) {
 		
+			(void)delete_section;
+
 			#ifdef EZTIME_CACHE_EEPROM
 				eepromBegin();
 				if (_eeprom_address < 0) { triggerError(NO_CACHE_SET); return; }
